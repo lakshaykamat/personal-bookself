@@ -44,11 +44,16 @@ const HomePage = () => {
     setSearchTerm(convertToURLEncoded(event.target.value));
   };
 
+  const keyToImage = (key: any) => {
+    if (key) {
+      return `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
+    } else {
+      null;
+    }
+  };
+
   return (
-    <main className="mx-7 xl:max-w-5xl xl:mx-auto">
-      <h1 className="text-4xl my-7 font-bold text-center ">
-        Personal Bookself
-      </h1>
+    <>
       <Input
         type="text"
         placeholder="Search books..."
@@ -66,20 +71,14 @@ const HomePage = () => {
               <BookCard
                 key={i}
                 title={item.title}
-                image={() => {
-                  if (item.cover_edition_key) {
-                    return `https://covers.openlibrary.org/b/olid/${item.cover_edition_key}-M.jpg`;
-                  } else {
-                    return null;
-                  }
-                }}
+                image={keyToImage(item.cover_edition_key)}
                 editionCount={item.edition_count}
               />
             ))}
           </div>
         </div>
       )}
-    </main>
+    </>
   );
 };
 export default HomePage;
