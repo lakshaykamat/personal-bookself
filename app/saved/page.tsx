@@ -5,7 +5,10 @@ import LocalHandler from "@/lib/LocalHandler";
 type Props = {};
 
 const SavedBooks = (props: Props) => {
-  const Books = LocalHandler.getBooks();
+  let Books = undefined;
+  if (typeof window !== "undefined") {
+    Books = LocalHandler.getBooks();
+  }
   return (
     <>
       <h2 className="mb-3 font-semibold text-xl">Your Saved Books</h2>
