@@ -3,7 +3,8 @@ import useSWR from "swr";
 import { Input } from "@/components/ui/input";
 import Icons from "@/lib/Icons";
 import { useState, useEffect } from "react";
-import BookCard from "@/components/BookCard";
+import BookCard, { BookSkeleton } from "@/components/BookCard";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const fetcher = (url: string) =>
   fetch(url).then((res) => {
@@ -60,7 +61,14 @@ const HomePage = () => {
         value={searchTerm}
         onChange={handleInputChange}
       />
-      {isLoading && <h1 className="">Loading...</h1>}
+      {isLoading && (
+        <div className="my-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+          <BookSkeleton />
+          <BookSkeleton />
+          <BookSkeleton />
+          <BookSkeleton />
+        </div>
+      )}
       {data && (
         <div className="my-7">
           <h2 className="mb-3 font-semibold text-xl">

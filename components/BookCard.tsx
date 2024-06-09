@@ -1,6 +1,7 @@
 import Icons from "@/lib/Icons";
 import LocalHandler from "@/lib/LocalHandler";
 import React from "react";
+import { Skeleton } from "./ui/skeleton";
 
 export type Book = {
   title: string;
@@ -121,5 +122,12 @@ export const BookCard2 = (props: Book) => {
     </div>
   );
 };
-
+export const BookSkeleton = () => {
+  return (
+    <div className="px-7 py-7 gap-6 flex flex-col rounded drop-shadow-md">
+      <Skeleton className="w-full h-[300px] " />
+      <Skeleton className="w-full h-[50px] " />
+    </div>
+  );
+};
 export default BookCard;

@@ -32,11 +32,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <main className="mx-7 xl:max-w-5xl xl:mx-auto">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between">
               <h1 className="font-serif text-4xl my-7 font-bold text-center ">
                 Personal Bookself
               </h1>
-              <div className="flex gap-3">
+              <div className="flex my-3 gap-3">
                 <DarkMode />
                 <Link href={"/saved"}>
                   <Button title="Saved Books" variant={"outline"}>
